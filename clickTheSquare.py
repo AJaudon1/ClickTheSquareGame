@@ -88,7 +88,7 @@ def draw_square():
 
 
 #Difficulty based on set grid_size
-grid_size = 5
+grid_size = 20
 
 #used for changing logo colors
 left_poly_color = "White"
@@ -113,7 +113,7 @@ button_hover = False
 
 #initialize game music
 pygame.mixer.init()
-pygame.mixer.music.load("How_Far.mp3")
+pygame.mixer.music.load("Audio/How_Far.mp3")
 pygame.mixer.music.play(-1)
 
 while game_running:
@@ -146,7 +146,7 @@ while game_running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if start_button.is_on(pygame.mouse.get_pos()):
                 pygame.mixer.music.stop()
-                pygame.mixer.music.load("Seeing_Squares.mp3")
+                pygame.mixer.music.load("Audio/Seeing_Squares.mp3")
                 pygame.mixer.music.play(-1)
 
                 #Gameplay starts here
