@@ -88,7 +88,7 @@ def draw_square():
 
 
 #Difficulty based on set grid_size
-grid_size = 20
+grid_size = 5
 
 #used for changing logo colors
 left_poly_color = "White"
@@ -121,7 +121,7 @@ while game_running:
 
     #turn on main menu music if off
     if not pygame.mixer.music.get_busy():
-        pygame.mixer.music.load("How_Far.mp3")
+        pygame.mixer.music.load("Audio/How_Far.mp3")
         pygame.mixer.music.play(-1)
 
     #if mouse is not over buttons
@@ -201,8 +201,7 @@ while game_running:
                     screen.fill("Black")
                     
                     #turn on a target if there isn't one
-                    #DOUBLE PICKS CURRENTLY LOOK LIKE DROPPED INPUTS
-                    #PROVIDE FEEDBACK FOR CLICKS NEXT, GREEN FLASH?
+                    #Green flash on correct pick freezes game for 5 frames, will affect in-game timer
                     if target_on == False:
                         row = rand_index(grid_size)
                         col = rand_index(grid_size)
@@ -225,6 +224,10 @@ while game_running:
                                         if game_grid[row][col].is_target == True:
                                             points += 1
                                             game_grid[row][col].is_target = False
+                                            game_grid[row][col].change_color("Green")
+                                            game_grid[row][col].draw(screen)
+                                            pygame.display.flip()
+                                            pygame.time.wait(200)
                                             game_grid[row][col].change_color("White")
                                             target_on = False
                                         else:
